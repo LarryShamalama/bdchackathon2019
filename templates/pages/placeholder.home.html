@@ -3,8 +3,43 @@
 {% block content %}
 
 <div class="page-header">
-  <h1>Sticky footer with fixed navbar</h1>
+  <h1>Sales Analysis Tool</h1>
 </div>
-<p class="lead">Pin a fixed-height footer to the bottom of the viewport in desktop browsers with this custom HTML and CSS. A fixed navbar has been added within <code>#wrap</code> with <code>padding-top: 60px;</code> on the <code>.container</code>.</p>
+<p class="lead"> 
+   This tool will allow us to configure what are the different elements which will affect the sales of the car.
+</p>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<input type='text' id='num1'>
+<input type='text' id='num2'>
+<input type='text' id='num3'>
+<input type='text' id='num4'>
+
+<button type='button' id ='retrieve'>Submit</button>
+<br/>
+<br/>
+<br/>
+<div id='wordResult'></div>
+<script>
+    $(document).ready(function() {
+       $('#retrieve').click(function(){
+           var num1 = $('#num1').val();
+           var num2 = $('#num2').val();
+           var num3 = $('#num3').val();
+           var num4 = $('#num4').val();
+           $.ajax({
+           url: "/get_word",
+           type: "get",
+           data: {num1: num1, num2: num2, num3: num3, num4: num4},
+           success: function(response) {
+           $("#wordResult").html(response.html);
+          },
+          error: function(xhr) {
+            //Do Something to handle error
+         }
+         });
+       });
+    });
+  </script>
+</html>
 
 {% endblock %}

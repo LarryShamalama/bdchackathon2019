@@ -2,7 +2,7 @@
 # Imports
 #----------------------------------------------------------------------------#
 
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, jsonify
 # from flask.ext.sqlalchemy import SQLAlchemy
 import logging
 from logging import Formatter, FileHandler
@@ -67,6 +67,15 @@ def register():
 def forgot():
     form = ForgotForm(request.form)
     return render_template('forms/forgot.html', form=form)
+
+@app.route('/get_word')
+def get_prediction():
+  num1 = request.args.get('num1')
+  num2 = request.args.get('num2')
+  num3 = request.args.get('num3')
+  num4 = request.args.get('num4')
+
+  return jsonify({'html': (num1 + num2 + num3 + num4)})
 
 # Error handlers.
 
