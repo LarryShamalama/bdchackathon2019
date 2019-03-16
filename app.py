@@ -70,8 +70,12 @@ def forgot():
 
 @app.route('/get_word')
 def get_prediction():
-  word = request.args.get('word')
-  return jsonify({'html': 'word is real'})
+  num1 = request.args.get('num1')
+  num2 = request.args.get('num2')
+  num3 = request.args.get('num3')
+  num4 = request.args.get('num4')
+
+  return jsonify({'html': (num1 + num2 + num3 + num4)})
 
 # Error handlers.
 
