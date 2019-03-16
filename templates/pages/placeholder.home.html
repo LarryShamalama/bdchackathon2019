@@ -9,17 +9,27 @@
    This tool will allow us to configure what are the different elements which will affect the sales of the car.
 </p>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-<input type='text' id='word'>
+<input type='text' id='num1'>
+<input type='text' id='num2'>
+<input type='text' id='num3'>
+<input type='text' id='num4'>
+
 <button type='button' id ='retrieve'>Submit</button>
+<br/>
+<br/>
+<br/>
 <div id='wordResult'></div>
 <script>
     $(document).ready(function() {
        $('#retrieve').click(function(){
-           var word = $('#word').val();
+           var num1 = $('#num1').val();
+           var num2 = $('#num2').val();
+           var num3 = $('#num3').val();
+           var num4 = $('#num4').val();
            $.ajax({
            url: "/get_word",
            type: "get",
-           data: {word: word},
+           data: {num1: num1, num2: num2, num3: num3, num4: num4},
            success: function(response) {
            $("#wordResult").html(response.html);
           },
